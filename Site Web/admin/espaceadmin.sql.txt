@@ -1,0 +1,19 @@
+CREATE DATABASE IF NOT EXISTS espace_admin;
+USE mglsi_news;
+
+-- DROP TABLE articles,membres
+
+
+CREATE TABLE articles(
+	id int primary key auto_increment,
+	titre varchar(255),
+	contenu text,
+	dateCreation datetime DEFAULT NOW(),
+	dateModification datetime DEFAULT NOW(),
+	categorie int
+);
+
+
+CREATE TABLE membres(
+	id int primary key auto_increment,
+	pseudo varchar(20)
