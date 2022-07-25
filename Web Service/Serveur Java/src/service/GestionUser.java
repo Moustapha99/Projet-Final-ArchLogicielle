@@ -1,19 +1,23 @@
 package service;
 
-import java.util.ArrayList;
+import java.util.ArrayList;	
+
+
 
 import javax.jws.WebParam;
 import javax.jws.WebService;
+import javax.jws.WebMethod;
+
 
 import java.sql.*;
 import java.util.*;
 
 import metier.User;
 
-@WebService
+@WebService(name="UserWS")
 public class GestionUser 
 {
-    String dbURL = "jdbc:mysql://localhost:3306/GestionUser";
+    String dbURL = "jdbc:mysql://localhost:3306/mglsi_news";
     String dbUser = "root";
     String dbPassword = "";
 
@@ -47,6 +51,7 @@ public class GestionUser
             
             conn.close();
             return true;
+     
         } 
         catch (SQLException e) {
             e.printStackTrace();
@@ -145,13 +150,11 @@ public class GestionUser
             return null;
         }
     }
-
-    //methode pour s'authentifier
-
     
+  //methode pour s'authentifier
     @WebMethod(operationName="authentification")
 	public boolean authentification (@WebParam(name="login") String login, @WebParam(name="password") String password) {
-		String query = "select login,password from user";
+		String query = "select login,password from Users";
 		boolean connexion=false;
 		
 		try {
@@ -178,4 +181,6 @@ public class GestionUser
         return connexion;
 }
 }
+
+
 
