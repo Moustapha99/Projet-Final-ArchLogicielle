@@ -146,4 +146,36 @@ public class GestionUser
         }
     }
 
+    //methode pour s'authentifier
+
+    
+    @WebMethod(operationName="authentification")
+	public boolean authentification (@WebParam(name="login") String login, @WebParam(name="password") String password) {
+		String query = "select login,password from user";
+		boolean connexion=false;
+		
+		try {
+            Connection conn = DriverManager.getConnection(dbURL, dbUser, dbPassword);
+			PreparedStatement statement = conn.prepareStatement(query);
+			ResultSet rs=statement.executeQuery();
+			while(rs.next()) {
+				if(password.equals(rs.getString("password"))==true && login.equals(rs.getString("login"))==true) {				
+					connexion=true;
+					break;
+				}
+			}
+			if(connexion==true) {
+				System.out.println("Connexion reussie");
+			}
+			else {
+				System.out.println("login ou mot de passe incorrect");
+			}
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+            connexion = false;
+        }
+        return connexion;
 }
+}
+
