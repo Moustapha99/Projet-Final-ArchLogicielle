@@ -16,10 +16,7 @@ app.use(
         
         /*  ------------------- definition de la route ------------------- */
         
-// app.get("/", (req, res) => {  // req = request, res = response   
-//     const article = req.query.article;  
-//     res.send(article + "!");   
-// });         
+        
 app.use("/articles", articleRouter);
 // app.use("articles/{id}", categoryRouter);
 
@@ -35,19 +32,7 @@ app.use("/articles", articleRouter);
         console.log('Server started on port 5000');
     });
 
-//         //post request
-// const article = [];
-// app.post("/article", (req, res) => {
-//     const { article }= req.body;
 
-//     user.push({ article: article.titre, id: article.id});
-
-//     res.json({ article: article.titre, id: article.id});
-// });
-
-// app.get("/article", async (req, res) => {
-//     const query = "SELECT * FROM articles";
-//     createPool.
 
 
 
