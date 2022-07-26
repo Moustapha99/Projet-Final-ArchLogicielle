@@ -28,16 +28,28 @@ public interface UserWS {
     /**
      * 
      * @param password
+     * @param role
+     * @param id
      * @param login
+     * @param nom
+     * @param prenom
      * @return
-     *     returns boolean
+     *     returns java.lang.Boolean
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "authentification", targetNamespace = "http://service/", className = "service.Authentification")
-    @ResponseWrapper(localName = "authentificationResponse", targetNamespace = "http://service/", className = "service.AuthentificationResponse")
-    @Action(input = "http://service/UserWS/authentificationRequest", output = "http://service/UserWS/authentificationResponse")
-    public boolean authentification(
+    @RequestWrapper(localName = "modifier", targetNamespace = "http://service/", className = "service.Modifier")
+    @ResponseWrapper(localName = "modifierResponse", targetNamespace = "http://service/", className = "service.ModifierResponse")
+    @Action(input = "http://service/UserWS/modifierRequest", output = "http://service/UserWS/modifierResponse")
+    public Boolean modifier(
+        @WebParam(name = "id", targetNamespace = "")
+        int id,
+        @WebParam(name = "nom", targetNamespace = "")
+        String nom,
+        @WebParam(name = "prenom", targetNamespace = "")
+        String prenom,
+        @WebParam(name = "role", targetNamespace = "")
+        int role,
         @WebParam(name = "login", targetNamespace = "")
         String login,
         @WebParam(name = "password", targetNamespace = "")
@@ -74,6 +86,25 @@ public interface UserWS {
      * 
      * @param password
      * @param login
+     * @return
+     *     returns boolean
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "authentification", targetNamespace = "http://service/", className = "service.Authentification")
+    @ResponseWrapper(localName = "authentificationResponse", targetNamespace = "http://service/", className = "service.AuthentificationResponse")
+    @Action(input = "http://service/UserWS/authentificationRequest", output = "http://service/UserWS/authentificationResponse")
+    public boolean authentification(
+        @WebParam(name = "login", targetNamespace = "")
+        String login,
+        @WebParam(name = "password", targetNamespace = "")
+        String password);
+
+    /**
+     * 
+     * @param password
+     * @param role
+     * @param login
      * @param nom
      * @param prenom
      * @return
@@ -89,33 +120,8 @@ public interface UserWS {
         String nom,
         @WebParam(name = "prenom", targetNamespace = "")
         String prenom,
-        @WebParam(name = "login", targetNamespace = "")
-        String login,
-        @WebParam(name = "password", targetNamespace = "")
-        String password);
-
-    /**
-     * 
-     * @param password
-     * @param id
-     * @param login
-     * @param nom
-     * @param prenom
-     * @return
-     *     returns java.lang.Boolean
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "modifier", targetNamespace = "http://service/", className = "service.Modifier")
-    @ResponseWrapper(localName = "modifierResponse", targetNamespace = "http://service/", className = "service.ModifierResponse")
-    @Action(input = "http://service/UserWS/modifierRequest", output = "http://service/UserWS/modifierResponse")
-    public Boolean modifier(
-        @WebParam(name = "id", targetNamespace = "")
-        int id,
-        @WebParam(name = "nom", targetNamespace = "")
-        String nom,
-        @WebParam(name = "prenom", targetNamespace = "")
-        String prenom,
+        @WebParam(name = "role", targetNamespace = "")
+        int role,
         @WebParam(name = "login", targetNamespace = "")
         String login,
         @WebParam(name = "password", targetNamespace = "")

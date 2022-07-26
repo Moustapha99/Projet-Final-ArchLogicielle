@@ -18,6 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="nom" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="prenom" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="role" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="login" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="password" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
@@ -32,6 +33,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "ajouter", propOrder = {
     "nom",
     "prenom",
+    "role",
     "login",
     "password"
 })
@@ -39,6 +41,7 @@ public class Ajouter {
 
     protected String nom;
     protected String prenom;
+    protected int role;
     protected String login;
     protected String password;
 
@@ -88,6 +91,22 @@ public class Ajouter {
      */
     public void setPrenom(String value) {
         this.prenom = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété role.
+     * 
+     */
+    public int getRole() {
+        return role;
+    }
+
+    /**
+     * Définit la valeur de la propriété role.
+     * 
+     */
+    public void setRole(int value) {
+        this.role = value;
     }
 
     /**

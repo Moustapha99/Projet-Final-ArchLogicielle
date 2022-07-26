@@ -28,21 +28,25 @@ public class GestionUser
     //methode pour ajouter un utilisateur
     public Boolean ajouter(@WebParam(name="nom")String nom,
                            @WebParam(name="prenom") String prenom, 
+                           @WebParam(name="role") int role,
                            @WebParam(name="login") String login,
                            @WebParam(name="password") String password)
+
     {
         try {
             Connection conn = DriverManager.getConnection(dbURL, dbUser, dbPassword);
             PreparedStatement statement;
             
             // Ajouter utilisateur
-            sql = "INSERT INTO Users (nom, prenom, login, password) VALUES (?, ?, ?, ?)";
+            sql = "INSERT INTO Users (nom, prenom, roles, login, password) VALUES (?, ?, ?, ?, ?)";
             
             statement = conn.prepareStatement(sql);
             statement.setString(1, nom);
             statement.setString(2, prenom);
-            statement.setString(3, login);
-            statement.setString(4, password);
+            statement.setInt(3, role);
+            statement.setString(4, login);
+            statement.setString(5, password);
+
             
             int rowsInserted = statement.executeUpdate();
             if (rowsInserted > 0) {
@@ -60,8 +64,11 @@ public class GestionUser
     }
    
     //methode pour modifier un utilisateur  
-    public Boolean modifier(@WebParam(name="id")int id, @WebParam(name="nom") String nom,
-                            @WebParam(name="prenom") String prenom, @WebParam(name="login") String login,
+    public Boolean modifier(@WebParam(name="id")int id, 
+                            @WebParam(name="nom") String nom,
+                            @WebParam(name="prenom") String prenom, 
+                            @WebParam(name="role") int role,
+                            @WebParam(name="login") String login,
                             @WebParam(name="password") String password)
     {
         try {
@@ -69,14 +76,15 @@ public class GestionUser
             PreparedStatement statement;
             
             // Modifier utilisateur
-            sql = "UPDATE Users SET nom = ?, prenom = ?, login = ?, password = ? WHERE id = ?";
+            sql = "UPDATE Users SET nom = ?, prenom = ?, , role ?, login = ?, password = ? WHERE id = ?";
             
             statement = conn.prepareStatement(sql);
             statement.setString(1, nom);
             statement.setString(2, prenom);
-            statement.setString(3, login);
-            statement.setString(4, password);
-            statement.setInt(5, id);
+            statement.setInt(3, role);
+            statement.setString(4, login);
+            statement.setString(5, password);
+            statement.setInt(6, id);
             
             int rowsUpdated = statement.executeUpdate();
             if (rowsUpdated > 0) {
@@ -137,6 +145,7 @@ public class GestionUser
                 user.setId(result.getInt("id"));
                 user.setNom(result.getString("nom"));
                 user.setPrenom(result.getString("prenom"));
+                user.setRole(result.getInt("role"));
                 user.setLogin(result.getString("login"));
                 user.setPassword(result.getString("password"));
                 users.add(user);

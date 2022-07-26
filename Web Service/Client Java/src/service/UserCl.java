@@ -33,6 +33,7 @@ public class UserCl {
 		String password;
 		String nom;
 		String prenom;
+		int role;
 		
 		boolean e=false;
 		
@@ -48,19 +49,26 @@ public class UserCl {
 		choix=sc.nextInt();
 		
 		switch(choix){
-            case 1 : 
+			case 1 : 
+			Scanner sc1 = new Scanner(System.in);
+			Scanner sc2 = new Scanner(System.in);
                 System.out.println("Veuillez entrer le nom de l'utilisateur");
-                nom = sc.nextLine();
+                nom = sc1.nextLine();
                 System.out.println("Veuillez entrer le prenom de l'utilisateur");
-                prenom = sc.nextLine();
+                prenom = sc1.nextLine();
                 System.out.println("Veuillez entrer le login de l'utilisateur");
-                login = sc.nextLine();
+                login = sc1.nextLine();
+                System.out.println("Veuillez entrer le role de l'utilisateur");
+                System.out.println("---1. Administrateur---");
+                System.out.println("---2. Editeur---");
+                System.out.println("---3. Visiteur---");
+                role = sc1.nextInt();
                 System.out.println("Veuillez entrer le mot de passe de l'utilisateur");
-                password = sc.nextLine();
+                password = sc2.nextLine();
 
                 // Ajouter utilisateur
                 
-                stub.ajouter(nom, prenom, login, password);
+                stub.ajouter(nom, prenom, role, login, password);
                 
                 break;
             case 2 :
@@ -84,13 +92,14 @@ public class UserCl {
                     nom = sc.nextLine();
                     System.out.println("Entrer le nouveau prenom de l'utilisateur");
                     prenom = sc.nextLine();
-                    
+                    System.out.println("Entrer le nouveau role de l'utilisateur");
+                    role = sc.nextInt();
                     System.out.println("Entrer le nouveau login de l'utilisateur");
                     login = sc.nextLine(); 
                     System.out.println("Entrer le nouveau mot de passe de l'utilisateur");
                     password = sc.nextLine();
                     
-                    stub.modifier(id, nom, prenom, login, password);
+                    stub.modifier(id, nom, prenom, role, login, password);
                      
                 break;
             case 4 : 

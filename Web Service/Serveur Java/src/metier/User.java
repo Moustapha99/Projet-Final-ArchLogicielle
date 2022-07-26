@@ -9,6 +9,7 @@ public class User {
     private String prenom;
     private String login;
     private String password;
+    private int role;
     private static int lastId = 0;
     
     
@@ -16,13 +17,14 @@ public class User {
     {
     	this.id = ++lastId;
     }
-    public User(int id, String nom, String prenom, String login, int lastId, String password)  
-    {
+    public User(int id, String nom, String prenom, String login, int lastId, String password, int role) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.login = login;
-    	this.id = ++lastId;
+        this.password = password;
+        this.role = role;
+        this.id = ++lastId;
     }
 
     public int getId() {
@@ -52,12 +54,17 @@ public class User {
     public void setLogin(String login) {
         this.login = login;
     }
-
     public String getPassword() {
         return password;
     }
     public void setPassword(String password) {
         this.password = password;
+    }
+    public int getRole() {
+        return role;
+    }   
+    public void setRole(int role) {
+        this.role = role;
     }
 
 

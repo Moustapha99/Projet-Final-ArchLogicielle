@@ -33,7 +33,6 @@ public class ObjectFactory {
     private final static QName _ModifierResponse_QNAME = new QName("http://service/", "modifierResponse");
     private final static QName _AjouterResponse_QNAME = new QName("http://service/", "ajouterResponse");
     private final static QName _ListerResponse_QNAME = new QName("http://service/", "listerResponse");
-    private final static QName _User_QNAME = new QName("http://service/", "user");
     private final static QName _SupprimerResponse_QNAME = new QName("http://service/", "supprimerResponse");
 
     /**
@@ -210,15 +209,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://service/", name = "listerResponse")
     public JAXBElement<ListerResponse> createListerResponse(ListerResponse value) {
         return new JAXBElement<ListerResponse>(_ListerResponse_QNAME, ListerResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link User }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://service/", name = "user")
-    public JAXBElement<User> createUser(User value) {
-        return new JAXBElement<User>(_User_QNAME, User.class, null, value);
     }
 
     /**
