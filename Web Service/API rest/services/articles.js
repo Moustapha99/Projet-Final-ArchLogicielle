@@ -9,6 +9,7 @@ async function getMultiple(page = 1) {
     );
 
 async function getOne(id) {
+    const offset = helper.getOffset(page, config.listPerPage);
     const rows = await db.query (
         `SELECT * FROM article WHERE id = ${id} LIMIT 1`
     );

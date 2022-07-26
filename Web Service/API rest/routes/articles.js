@@ -13,12 +13,12 @@ router.get('/', async (req, res, next) => {
         }
         } );
 
-router.get('/id', async (req, res, next) => {
-    try {
-        res.json(await articles.getOne(req.params.id));
-    } catch (err) {
-        console.error ("L'article n'a pas pu etre recupere", err.message);
-        next(err);
-        }   
-        } );
+// router.get('/{id}', async (req, res, next) => {
+//     try {
+//         res.json(await articles.getOne(req.params.id));
+//     } catch (err) {
+//         console.error ("L'article n'a pas pu etre recupere", err.message);
+//         next(err);
+//         }   
+//         } );
 module.exports = router;

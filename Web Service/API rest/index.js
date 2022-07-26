@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const port = 5000;
 const articleRouter = require('./routes/articles');
-const categoryRouter = require('./routes/articles/id');
+// const categoryRouter = require('./routes/articles/{id}');
 
 app.use(express.json());
 app.use(
@@ -21,7 +21,7 @@ app.use(
 //     res.send(article + "!");   
 // });         
 app.use("/articles", articleRouter);
-app.use("articles/id", categoryRouter);
+// app.use("articles/{id}", categoryRouter);
 
         /* ------------------- middleware qui gére les erreurs ------------------- */
     app.use((err, req, res, next) => {
